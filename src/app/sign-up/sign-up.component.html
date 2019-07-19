@@ -1,0 +1,25 @@
+<div class="c-card marginTop5">
+  <form #signupForm="ngForm">
+    <div class="c-card-title">Sign Up</div>
+
+    <div class="c-field">
+      <input type="email" name="email" placeholder="Enter your email address" [(ngModel)]="email"
+        class="c-field-control" maxlength="60" required />
+    </div>
+
+    <div class="c-field">
+      <input type="password" name="password" placeholder="Choose a password" [(ngModel)]="password"
+        class="c-field-control" required />
+    </div>
+
+    <div class="c-field">
+      <input name="displayName" placeholder="Enter a display name" [(ngModel)]="displayName" class="c-field-control"
+        maxlength="12" required />
+    </div>
+
+    <button [disabled]="!signupForm.form.valid" type="submit" (click)="signUp()" class="c-btn c-btn-primary w-100"
+      id="btn-signUp">
+      Sign Up
+    </button>
+  </form>
+</div>
