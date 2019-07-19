@@ -1,0 +1,48 @@
+<div class="messageContainer" [ngClass]="{'isOwnMessageContainer':isOwnMessage}">
+  <div class="messageData" [ngClass]="{'isOwnMessageData':isOwnMessage}">
+    <span class="sender" [ngClass]="{'isOwnSender':isOwnMessage}">
+      {{ userName }}
+    </span>
+    <span class="timestamp" [ngClass]="{'isOwnTimestamp':isOwnMessage}">
+      {{ timeStamp | date:'medium' }}
+    </span>
+  </div>
+  <div *ngIf="messageContent !== ''" class="messageContent" [ngClass]="{'isOwnMessageContent':isOwnMessage}">
+    {{ messageContent }}
+  </div>
+
+  <div *ngIf="messageContent === ''">
+
+    <div *ngIf="fileType === ('image/png' || 'image/jpg' || 'image/jpeg')">
+      <img [src]="sanitizer.bypassSecurityTrustResourceUrl(uploadedUrl)">
+    </div>
+
+    <div *ngIf="fileType === ('audio/mp3' || 'audio/ogg' || 'audio/wav')">
+      <audio controls>
+        <source [src]="sanitizer.bypassSecurityTrustResourceUrl(uploadedUrl)" [type]="fileType">
+      </audio>
+    </div>
+
+    <div *ngIf="fileType === ('video/mp4' || 'video/webm' || 'video/ogg')">
+      <video width="200" height="150" controls>
+        <source [src]="sanitizer.bypassSecurityTrustResourceUrl(uploadedUrl)" [type]="fileType">
+      </video>
+    </div>
+
+    <div *ngIf="fileType === 'image/gif'">
+      <embed height="150" width="200" [src]="sanitizer.bypassSecurityTrustResourceUrl(uploadedUrl)" [type]="fileType">
+    </div>
+
+    <div
+      *ngIf="fileType !== ('image/png' || 'image/jpg' || 'image/jpeg') && fileType !== 'image/gif' && fileType !== ('audio/mp3' || 'audio/ogg' || 'audio/wav') && fileType !== ('video/mp4' || 'video/webm' || 'video/ogg')">
+      <object width="200" height="150" [type]="fileType" [data]="sanitizer.bypassSecurityTrustResourceUrl(uploadedUrl)">
+      </object>
+    </div>
+
+    <button (click)="downloadImage(uploadedUrl)"> View </button>
+
+    <!-- <button (click)="downlodFiles(uploadedUrl)"> DOWNLOAD </button>
+
+    <button (click)="onSave(uploadedUrl)"> ONSAVE </button> -->
+  </div>
+</div>
