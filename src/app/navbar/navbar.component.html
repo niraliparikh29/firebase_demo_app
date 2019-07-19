@@ -1,0 +1,9 @@
+<div class="navBar">
+  <div id="heading" class="navLogo"><a class="color-white" routerLink="/">hanglyde</a></div>
+  <div class="links">
+      <a *ngIf="!showUser" class="c-btn c-btn-outline-white" routerLink="login">Login</a>
+      <a *ngIf="!showUser" class="c-btn c-btn-outline-white" routerLink="signup">Sign Up</a>
+      <span id="userEmail" class="color-white" *ngIf="showUser">Hello, {{userEmail}}</span>
+      <a *ngIf="showUser" class="c-btn c-btn-outline-white" (click)="logout()">Logout</a>
+  </div>
+</div>
