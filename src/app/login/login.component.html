@@ -1,0 +1,12 @@
+<div class="c-card marginTop5">
+  <div class="c-card-title">Log In</div>
+  <div class="c-field">
+    <input [(ngModel)]="email" type="email" name="email" class="c-field-control" placeholder="Email Address" />
+  </div>
+  <div class="c-field">
+    <input type="password" [(ngModel)]="password" name="password" class="c-field-control" placeholder="Password"/>
+  </div>
+  <button class="c-btn c-btn-primary w-100" id="btn-login" (click)="login()">
+    Log In
+  </button>
+</div>
